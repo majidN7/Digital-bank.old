@@ -7,6 +7,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.List;
+
 @SpringBootApplication
 public class CustomerServiceApplication {
 
@@ -17,11 +19,29 @@ public class CustomerServiceApplication {
     @Bean
     CommandLineRunner commandLineRunner(CustomerRepository customerRepository){
         return args -> {
-            customerRepository.save(Customer.builder()
-                    .firstName("Majid")
-                    .lasName("CHADAD")
-                    .email("majid@gmail.com")
-                    .build());
+            List <Customer> customerList=List.of(
+                    Customer.builder()
+                            .firstName("Sami")
+                            .lasName("CHADAD")
+                            .email("sami@gmail.com")
+                            .build(),
+                    Customer.builder()
+                            .firstName("Loujayne")
+                            .lasName("LOUJAYNE")
+                            .email("louajayne@gmail.com")
+                            .build(),
+                    Customer.builder()
+                            .firstName("Majid")
+                            .lasName("CHADAD")
+                            .email("majid@gmail.com")
+                            .build(),
+                    Customer.builder()
+                            .firstName("Ourssoula")
+                            .lasName("SIKAL")
+                            .email("sikal@gmail.com")
+                            .build()
+            );
+            customerRepository.saveAll(customerList);
         };
     }
 }
